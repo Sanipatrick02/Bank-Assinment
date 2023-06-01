@@ -95,3 +95,47 @@ public class BankAtmUI {
     JButton WithdrawSave = new JButton("Withdraw");
     JLabel AmountWithSave = new JLabel(" Enter Withdrawal Amount:");
     JTextField AmountFieldWithSave = new JTextField();
+
+    public void withdrawSavingsUI() {
+        FrameWithdrawSave.setSize(300, 300);
+        FrameWithdrawSave.setLayout(new GridLayout(3, 1));
+        FrameWithdrawSave.setVisible(true);
+        FrameWithdrawSave.setTitle("Shadow | Account:Withdrawal");
+
+        FrameWithdrawSave.add(AmountWithSave);
+        FrameWithdrawSave.add(AmountFieldWithSave);
+        FrameWithdrawSave.add(WithdrawSave);
+        FrameWithdrawSave.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        WithdrawSave.addActionListener(e -> {
+            BankAtm assObj = new BankAtm();
+            float WithdrawSave = (Float.parseFloat(AmountFieldWithSave.getText()));
+            float solution = assObj.withdrawalBalance(Float.parseFloat(AmountFieldWithSave.getText()));
+            if (WithdrawSave > 30000) {
+                JOptionPane.showMessageDialog(null, "You have Exceeded Your Withdrawal limit, Your limit is:" + uniChar + "10,000");
+            } else {
+                JOptionPane.showMessageDialog(null, "User Balance " + uniChar + solution + "\nThanks For Using Shadow Bank");
+                savingsUI();
+            }
+        });
+    }
+    JFrame FrameCurrent = new JFrame("window");
+    JLabel BalanceCurrent = new JLabel("Available Balance: "+uniChar+"1,000,000");
+    JButton depositCurrent = new JButton("Deposit");
+    JButton withdrawCurrent = new JButton("Withdraw");
+
+    public void currentUI() {
+        FrameCurrent.setSize(300, 300);
+        FrameCurrent.setLayout(new GridLayout(3, 1));
+        FrameCurrent.setVisible(true);
+        FrameCurrent.setTitle("Shadow | Account: Current");
+
+        FrameCurrent.add(BalanceCurrent);
+        FrameCurrent.add(depositCurrent);
+        FrameCurrent.add(withdrawCurrent);
+        FrameCurrent.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+
+        depositCurrent.addActionListener(e -> depositCurrentUI());
+        withdrawCurrent.addActionListener(e -> withdrawCurrentUI());
+    }
