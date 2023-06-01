@@ -139,3 +139,30 @@ public class BankAtmUI {
         depositCurrent.addActionListener(e -> depositCurrentUI());
         withdrawCurrent.addActionListener(e -> withdrawCurrentUI());
     }
+     JFrame FrameDepositCurrent = new JFrame("window");
+    JLabel AmountDepCurrent = new JLabel(" Enter Deposit Amount:");
+    JTextField AmountFieldDepCurrent = new JTextField();
+    JButton DepositCurrent = new JButton("Deposit");
+
+    public void depositCurrentUI(){
+        FrameDepositCurrent.setSize(300, 300);
+        FrameDepositCurrent.setLayout(new GridLayout(3, 1));
+        FrameDepositCurrent.setVisible(true);
+        FrameDepositCurrent.setTitle("Shadow | Account : Deposit");
+
+        FrameDepositCurrent.add(AmountDepCurrent);
+        FrameDepositCurrent.add(AmountFieldDepCurrent);
+        FrameDepositCurrent.add(DepositCurrent);
+        FrameDepositCurrent.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        DepositCurrent.addActionListener(e -> {
+            BankAtm assObj = new BankAtm();
+            float answer1 = assObj.balance1 (Float.parseFloat(AmountFieldDepCurrent.getText()));
+            JOptionPane.showMessageDialog(null, "You current balance is " + uniChar + answer1);
+        });
+    }
+    JFrame FrameWithdrawCurrent = new JFrame("window");
+    JLabel AmountWithCurrent = new JLabel(" Enter Withdrawal Amount:");
+    JTextField AmountFieldWithCurrent = new JTextField();
+    JButton WithdrawCurrent = new JButton("Withdraw");
+
