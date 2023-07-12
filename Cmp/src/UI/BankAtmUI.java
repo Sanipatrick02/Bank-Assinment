@@ -166,3 +166,23 @@ public class BankAtmUI {
     JTextField AmountFieldWithCurrent = new JTextField();
     JButton WithdrawCurrent = new JButton("Withdraw");
 
+public void withdrawCurrentUI() {
+        FrameWithdrawCurrent.setSize(300, 300);
+        FrameWithdrawCurrent.setLayout(new GridLayout(3, 1));
+        FrameWithdrawCurrent.setVisible(true);
+        FrameWithdrawCurrent.setTitle("Shadow | Account : Withdrawal");
+
+        FrameWithdrawCurrent.add(AmountWithCurrent);
+        FrameWithdrawCurrent.add(AmountFieldWithCurrent);
+        FrameWithdrawCurrent.add(WithdrawCurrent);
+        FrameWithdrawCurrent.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        WithdrawCurrent.addActionListener(e -> {
+            BankAtm assObj = new BankAtm();
+            float solution1 = assObj.withdrawalBalance(Float.parseFloat(AmountFieldWithCurrent.getText()));
+            JOptionPane.showMessageDialog(null, "Withdrawn Amount " +Float.parseFloat(AmountFieldWithCurrent.getText()));
+            JOptionPane.showMessageDialog(null, "Available Balance " +uniChar+solution1);
+            currentUI();
+        });
+    }
+}
